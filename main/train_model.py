@@ -1,7 +1,6 @@
 from input import hidden_layer_size, delay, window, prediction_steps, activation
-from util import get_mackey_glass_intervals
 from model.neural_network import TDNN
-
+from util import get_mackey_glass_intervals
 
 if __name__ == '__main__':
     nn_model = TDNN(

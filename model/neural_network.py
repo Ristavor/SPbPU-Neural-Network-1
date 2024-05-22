@@ -1,4 +1,4 @@
-from keras import Input, Model, Sequential
+from keras import Sequential
 from keras.src.layers import Dense, Flatten
 
 

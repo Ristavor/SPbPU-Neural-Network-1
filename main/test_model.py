@@ -1,18 +1,22 @@
 import json
+
 import numpy as np
 from matplotlib import pyplot as plt
 
 import util
-from model.neural_network import TDNN
 from input import hidden_layer_size, delay, window, prediction_steps, activation
+from model.neural_network import TDNN
+
+
 def show_difference_plot(expected, predicted):
     if len(expected) != len(predicted):
-        raise ValueError(f"Не совпадают размерности expected и predicted:\nexpected: {len(expected)}\npredicted: {len(predicted)}")
+        raise ValueError(
+            f"Не совпадают размерности expected и predicted:\nexpected: {len(expected)}\npredicted: {len(predicted)}")
     t_values = [i for i in range(len(expected))]
     plt.plot(t_values, expected, label="Expected")
     plt.title(f"Ns = {hidden_layer_size}, D = {delay}, M={window}")
     plt.plot(t_values, predicted, label="Predicted")
-    mse_arr = [(expected[t] - predicted[t])**2 for t in t_values]
+    mse_arr = [(expected[t] - predicted[t]) ** 2 for t in t_values]
     plt.plot(t_values, mse_arr, label=f"Difference. MSE = {round(float(np.mean(mse_arr)), 4)}")
     plt.xlabel('t')
     plt.ylabel('x(t)')
